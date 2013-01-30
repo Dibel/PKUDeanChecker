@@ -9,11 +9,11 @@ void MessageHandler(QtMsgType type, const char *msg)
 #ifdef _WIN32
     FILE * f = fopen("log.txt","a");
     switch (type) {
-#ifdef _DEBUG_ON
     case QtDebugMsg:
+#ifdef _DEBUG_ON
         fprintf(f, "[Debug]%s\n", msg);
-        break;
 #endif /* _DEBUG_ON */
+        break;
     case QtWarningMsg:
         fprintf(f, "[Warning]%s\n", msg);
         break;
@@ -28,11 +28,11 @@ void MessageHandler(QtMsgType type, const char *msg)
     fclose(f);
 #else /* _WIN32 */
     switch (type) {
-#ifdef _DEBUG_ON
     case QtDebugMsg:
+#ifdef _DEBUG_ON
         fprintf(stderr, "[Debug]%s\n", msg);
-        break;
 #endif /* _DEBUG_ON */
+        break;
     case QtWarningMsg:
         fprintf(stderr, "[Warning]%s\n", msg);
         break;
