@@ -1,5 +1,5 @@
 TEMPLATE = app
-CONFIG += qt debug warn_on
+CONFIG += qt warn_on release #debug
 QT += network
 TARGET = PKUDeanChecker
 SOURCES += main.cpp \
@@ -13,6 +13,6 @@ win32 {
       LIBS += /usr/i486-mingw32/qt-static/bin/qt-plugins/plugins/codecs/libqcncodecs.a
       RC_FILE = win.rc
 }
-debug {
+debug_messages {
       DEFINES += _DEBUG_ON
 }
