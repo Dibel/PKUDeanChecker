@@ -4,3 +4,4 @@ moc_*.cpp
 *~
 /PKUDeanChecker.exe
 /PKUDeanChecker
+qrc_*.cpp
