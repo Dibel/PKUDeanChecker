@@ -4,6 +4,11 @@
 #include <cstdio>
 #include <cstdlib>
 
+#ifdef _WIN32
+#include <QtPlugin>
+Q_IMPORT_PLUGIN(qcncodecs);
+#endif /* _WIN32 */
+
 void MessageHandler(QtMsgType type, const char *msg)
 {
 #ifdef _WIN32

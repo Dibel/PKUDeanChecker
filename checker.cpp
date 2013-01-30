@@ -124,17 +124,9 @@ void PKUDeanChecker::checkData(QNetworkReply * reply)
     }
     int count = 0;
     int pos = 0;
-    //FIXME:
-    //Win32 platform lacks GBK codec plugin(libcncodecs).
-    //The lines below serve as a hack.
-    //Need re-implemention.
-#ifdef _WIN32
-    QString content = reply->readAll();
-#else /* _WIN32 */
     QString content =
         QTextCodec::codecForName("GBK")
         ->toUnicode(reply->readAll());
-#endif /* _WIN32 */
 //    qDebug("Webpage content:\n%s", content.toUtf8().data());
     QRegExp reg("<tr>");
     while(pos>=0){
