@@ -34,6 +34,7 @@ private slots:
     void checkData(QNetworkReply * reply);
     void showAbout();
     void showAboutQt();
+    void checkNow();
 };
 
 #endif /* _CHECKER_H_ */

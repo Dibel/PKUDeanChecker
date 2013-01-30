@@ -19,14 +19,20 @@ PKUDeanChecker::PKUDeanChecker(QObject * parent) : QObject(parent), courseCount(
     iconMenu = new QMenu;
     QAction * openAct = iconMenu
         ->addAction(QString::fromUtf8("打开成绩单页面"));
+    QAction * checkAct = iconMenu
+        ->addAction(QString::fromUtf8("立即检查成绩单"));
+    iconMenu->addSeparator();
     QAction * aboutAct = iconMenu
         ->addAction(QString::fromUtf8("关于")); 
     QAction * aboutQtAct = iconMenu
         ->addAction(QString::fromUtf8("关于Qt"));
+    iconMenu->addSeparator();
     QAction * exitAct = iconMenu
         ->addAction(QString::fromUtf8("退出"));
     QObject::connect(openAct, SIGNAL(triggered()),
                      this, SLOT(openWebPage()));
+    QObject::connect(checkAct, SIGNAL(triggered()),
+                     this, SLOT(checkNow()));
     QObject::connect(aboutAct, SIGNAL(triggered()),
                      this, SLOT(showAbout()));
     QObject::connect(aboutQtAct, SIGNAL(triggered()),
@@ -195,3 +201,8 @@ void PKUDeanChecker::showAboutQt()
     QMessageBox::aboutQt(NULL, QString::fromUtf8("关于Qt"));
 }
     
+void PKUDeanChecker::checkNow()
+{
+    courseCount = -1;
+    this->sendRequest();
+}
