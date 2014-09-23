@@ -1,6 +1,6 @@
 TEMPLATE = app
 CONFIG += qt warn_on release #debug
-QT += network
+QT += core gui network widgets
 TARGET = PKUDeanChecker
 SOURCES += main.cpp \
            checker.cpp
@@ -10,7 +10,6 @@ win32 {
       CONFIG -= debug debug_and_release
       CONFIG += release
       QMAKE_LFLAGS += -static-libgcc -static-libstdc++
-      LIBS += /usr/i486-mingw32/qt-static/bin/qt-plugins/plugins/codecs/libqcncodecs.a
       RC_FILE = win.rc
 }
 debug_messages {

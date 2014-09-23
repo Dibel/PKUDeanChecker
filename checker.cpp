@@ -1,6 +1,15 @@
 #include <checker.h>
 #include <QtGui>
 #include <QtNetwork>
+#include <QSystemTrayIcon>
+#include <QMenu>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QDialogButtonBox>
+#include <QString>
+#include <QMessageBox>
 
 #define INTERVAL 30
 #define USER_AGENT "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.56 Safari/537.17"
@@ -100,8 +109,8 @@ PKUDeanChecker::~PKUDeanChecker()
 void PKUDeanChecker::sendRequest()
 {
     qDebug("[At %s]Sending request to %s",
-           QTime::currentTime().toString().toAscii().data(),
-           url.arg(id).toAscii().data());
+           QTime::currentTime().toString().toStdString().data(),
+           url.arg(id).toStdString().data());
     QNetworkRequest request(QUrl(url.arg(id)));
     request.setRawHeader("User-Agent", USER_AGENT);
     mgr->get(request);
@@ -145,7 +154,7 @@ void PKUDeanChecker::checkData(QNetworkReply * reply)
     --count;
     qDebug("[At %s]Get course count: %d",
            QTime::currentTime().toString()
-           .toAscii().data(),           
+           .toStdString().data(),
            count);
     if(count==-1) {
             qWarning("Reply parse error, invalid session ID?");
